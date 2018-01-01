@@ -129,9 +129,11 @@
                                     <constraint firstAttribute="height" constant="320" id="vUk-Iy-C5R"/>
                                 </constraints>
                             </imageView>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cfo-Ob-91n">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cfo-Ob-91n">
+                                <rect key="frame" x="0.0" y="15" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="GC8-hR-bQd"/>
+                                </constraints>
                                 <items>
                                     <navigationItem title="Title" id="2bi-Ig-MPb">
                                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="V8c-F6-Yp8">
@@ -147,6 +149,9 @@
                         <constraints>
                             <constraint firstItem="yYQ-bW-IkA" firstAttribute="centerY" secondItem="hv9-3r-qiA" secondAttribute="centerY" id="2PO-Um-ndB"/>
                             <constraint firstItem="yYQ-bW-IkA" firstAttribute="centerX" secondItem="hv9-3r-qiA" secondAttribute="centerX" id="9XV-jP-PBX"/>
+                            <constraint firstItem="cfo-Ob-91n" firstAttribute="top" secondItem="hv9-3r-qiA" secondAttribute="top" constant="15" id="grx-iY-7h9"/>
+                            <constraint firstItem="cfo-Ob-91n" firstAttribute="trailing" secondItem="oW2-9M-K2i" secondAttribute="trailing" id="r5f-fN-cxT"/>
+                            <constraint firstItem="cfo-Ob-91n" firstAttribute="leading" secondItem="oW2-9M-K2i" secondAttribute="leading" id="ymF-Hl-nhC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oW2-9M-K2i"/>
                     </view>

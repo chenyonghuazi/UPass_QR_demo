@@ -11,8 +11,11 @@ import UIKit
 class QRViewController: UIViewController {
 
     @IBOutlet weak var QRImageView: UIImageView!
+    var textBundle:String = String()
+    var filter:CIFilter?
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
         // Do any additional setup after loading the view.
     }
@@ -35,5 +38,24 @@ class QRViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func setQRImage(){
+        let data = textBundle.data(using: .ascii, allowLossyConversion: false)
+        
+        filter = CIFilter(name: "CIQRCodeGenerator")
+        
+        filter?.setValue(data, forKey: "inputMessage")
+        
+        let transform = CGAffineTransform(scaleX: 10, y: 10)
+        
+        let rawImage = filter?.outputImage
+        
+        let transformImage = rawImage?.transformed(by: transform)
+        
+        let image = UIImage(ciImage: (transformImage)!)
+        
+        QRImageView.image = image
+        
+    }
 
 }

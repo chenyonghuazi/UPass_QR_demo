@@ -16,7 +16,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var phoneTextField: UITextField!
     
     var filer: CIFilter?
-    
+    var textBundle:String = String()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -40,7 +40,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
 //            dataDictionary["email"] = emailTextField.text
 //            dataDictionary["phoneNumber"] = phoneTextField.text
             
-            var textBundle = ""
+            textBundle = ""
             textBundle = textBundle + firstNameTextField.text!
             textBundle = textBundle + lastNameTextField.text!
             textBundle = textBundle + emailTextField.text!
@@ -51,30 +51,23 @@ class ViewController: UIViewController,UITextFieldDelegate {
             
             filer?.setValue(data, forKey: "inputMessage")
             
-            transforSegue()
+            transforSegue(text: textBundle)
     }
         
         
     
 }
-    func transforSegue(){
-        let transform = CGAffineTransform(scaleX: 10, y: 10)
+    func transforSegue(text:String){
+        
         let story = UIStoryboard(name: "Main", bundle: nil)
         let destVC = story.instantiateViewController(withIdentifier: "QRViewController") as! QRViewController
-        if filer == nil{
-            print("Error")
-        }
-        if filer?.outputImage == nil {
-            print("filter.outputImage is nil")
-        }
-        if filer?.outputImage?.transformed(by: transform) == nil{
-            print("you are nil")
-            return
-        }
-        let image = UIImage(ciImage: filer!.outputImage!.transformed(by: transform))
-        destVC.QRImageView.image = image
         
-        present(destVC, animated: true, completion: nil)
+        
+        destVC.textBundle = text
+//        destVC.setQRImage()
+        present(destVC, animated: true) {
+            destVC.setQRImage()
+        }
     }
 
 }
