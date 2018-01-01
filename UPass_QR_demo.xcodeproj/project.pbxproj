@@ -12,6 +12,7 @@
 		E8095CAD1FFA9C0800BF1681 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8095CAB1FFA9C0800BF1681 /* Main.storyboard */; };
 		E8095CAF1FFA9C0800BF1681 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8095CAE1FFA9C0800BF1681 /* Assets.xcassets */; };
 		E8095CB21FFA9C0800BF1681 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8095CB01FFA9C0800BF1681 /* LaunchScreen.storyboard */; };
+		E8095CBA1FFADB6400BF1681 /* QRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8095CB91FFADB6400BF1681 /* QRViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		E8095CAE1FFA9C0800BF1681 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E8095CB11FFA9C0800BF1681 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E8095CB31FFA9C0800BF1681 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E8095CB91FFADB6400BF1681 /* QRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				E8095CA71FFA9C0800BF1681 /* AppDelegate.swift */,
 				E8095CA91FFA9C0800BF1681 /* ViewController.swift */,
+				E8095CB91FFADB6400BF1681 /* QRViewController.swift */,
 				E8095CAB1FFA9C0800BF1681 /* Main.storyboard */,
 				E8095CAE1FFA9C0800BF1681 /* Assets.xcassets */,
 				E8095CB01FFA9C0800BF1681 /* LaunchScreen.storyboard */,
@@ -138,6 +141,7 @@
 			files = (
 				E8095CAA1FFA9C0800BF1681 /* ViewController.swift in Sources */,
 				E8095CA81FFA9C0800BF1681 /* AppDelegate.swift in Sources */,
+				E8095CBA1FFADB6400BF1681 /* QRViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,11 +281,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GCPU83AAPV;
 				INFOPLIST_FILE = UPass_QR_demo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Edwin.UPass-QR-demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -292,11 +297,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GCPU83AAPV;
 				INFOPLIST_FILE = UPass_QR_demo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Edwin.UPass-QR-demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
