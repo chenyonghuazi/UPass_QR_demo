@@ -128,32 +128,33 @@ class scanViewController: UIViewController,AVCaptureMetadataOutputObjectsDelegat
             present(alert, animated: true, completion: nil)
         }
         else{
-                let endingTimer = Date()
-//                let lists = object.stringValue!.components(separatedBy: ",")
-                let story = UIStoryboard(name: "Main", bundle: nil)
-                let destVC = story.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
-//                destVC.firstNameString = lists[0]
-//                print("firstName:\(lists[0])")
-//                destVC.lastNameString = lists[1]
-//                destVC.emailString =  lists[2]
-//                destVC.phoneString =  lists[3]
-                destVC.textBundle = object.stringValue!
-            destVC.TimerString = String(endingTimer.timeIntervalSince(self.startingTime!))
-                self.present(destVC, animated: true, completion: {
-                    destVC.setInfo()
-                })
-            
+            if let lists = object.stringValue?.components(separatedBy: ","){
+                if lists.count == 4{
+                if lists[2].contains("@"){
+                    if lists[3].count == 10 && Int(lists[3]) != nil{
+                        let endingTimer = Date()
+                        let story = UIStoryboard(name: "Main", bundle: nil)
+                        let destVC = story.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+                        destVC.textBundle = object.stringValue!
+                        destVC.TimerString = String(endingTimer.timeIntervalSince(self.startingTime!))
+                        self.present(destVC, animated: true, completion: {
+                            destVC.setInfo()
+                        })
+                    }else{createAlert()}
+                }else{createAlert()}
+                
+                }else{createAlert()}
+            }
+            else{
+                createAlert()
+            }
         }
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func createAlert(){
+        let alert = UIAlertController(title: "Warning", message: "Your format of the value behind QR code is invalid", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
-    */
 
 }

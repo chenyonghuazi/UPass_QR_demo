@@ -15,11 +15,15 @@ class ViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
     
+    @IBOutlet weak var createQR: UIButton!
+    
     var filer: CIFilter?
     var textBundle:String = String()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        createQR.layer.cornerRadius = createQR.frame.height / 3
+        createQR.clipsToBounds = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -71,7 +75,12 @@ class ViewController: UIViewController,UITextFieldDelegate {
             
             transforSegue(text: textBundle)
             }
-    }
+        }else{
+            let alert = UIAlertController(title: "Warning", message: "Your Info can't be empty", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
+        
         
         
     
