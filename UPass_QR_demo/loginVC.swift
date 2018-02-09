@@ -15,6 +15,21 @@ class loginVC: UIViewController,UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let url = URL(string:"https://weblogin.utoronto.ca")
+        let session = URLSession.shared
+        session.dataTask(with: url!) { (data, response, error) in
+            if error != nil{
+                print(error!)
+            }else if let data = data{
+                do{
+                        let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+                        print(json)
+                }catch{
+                    
+                }
+                
+            }
+        }
         // Do any additional setup after loading the view.
     }
 
@@ -27,12 +42,13 @@ class loginVC: UIViewController,UITextFieldDelegate{
         view.endEditing(true)
     }
     @IBAction func login(_ sender: UIButton) {
-        let parameters = ["user":utorid.text,"pass":password.text]
+        let parameters = ["inputID":"chenyo21","inputPassword":"Qq800023"]
         
         let url = URL(string: "https://weblogin.utoronto.ca")
         var request = URLRequest(url: url!)
         request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Application/json", forHTTPHeaderField: "Content-Type")
+//        request.addValue("Application/json", forHTTPHeaderField: "Accept")
         do{
             let json = try JSONSerialization.data(withJSONObject: parameters, options: [])
             request.httpBody = json
@@ -44,7 +60,12 @@ class loginVC: UIViewController,UITextFieldDelegate{
             if let error = error{
                 print(error)
             }else if let response = response{
+                
+//                response.allHeaderFields
                 print(response)
+            }else if let data = data{
+                let htmlContent = String(data:data,encoding: .utf8)
+                print(htmlContent)
             }
             print("data:")
             print(data)
