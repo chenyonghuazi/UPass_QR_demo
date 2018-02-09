@@ -30,7 +30,12 @@ class ViewController: UIViewController,UITextFieldDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    @IBAction func login(_ sender: UIBarButtonItem) {
+        let story = UIStoryboard(name: "Main", bundle: nil)
+        let destVC = story.instantiateViewController(withIdentifier: "loginVC") as! loginVC
+        present(destVC, animated: true, completion: nil)
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }

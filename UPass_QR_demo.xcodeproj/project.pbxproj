@@ -13,6 +13,7 @@
 		E8095CAF1FFA9C0800BF1681 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8095CAE1FFA9C0800BF1681 /* Assets.xcassets */; };
 		E8095CB21FFA9C0800BF1681 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8095CB01FFA9C0800BF1681 /* LaunchScreen.storyboard */; };
 		E8095CBA1FFADB6400BF1681 /* QRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8095CB91FFADB6400BF1681 /* QRViewController.swift */; };
+		E891BE31202D3EC300F053DA /* loginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E891BE30202D3EC300F053DA /* loginVC.swift */; };
 		E89EAC9E1FFC77C1005BAAAF /* welcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E89EAC9D1FFC77C1005BAAAF /* welcomeViewController.swift */; };
 		E8DB5F201FFAFBAE00532316 /* scanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DB5F1F1FFAFBAE00532316 /* scanViewController.swift */; };
 		E8DB5F221FFB3FF000532316 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DB5F211FFB3FF000532316 /* DetailViewController.swift */; };
@@ -27,6 +28,7 @@
 		E8095CB11FFA9C0800BF1681 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E8095CB31FFA9C0800BF1681 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8095CB91FFADB6400BF1681 /* QRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRViewController.swift; sourceTree = "<group>"; };
+		E891BE30202D3EC300F053DA /* loginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginVC.swift; sourceTree = "<group>"; };
 		E89EAC9D1FFC77C1005BAAAF /* welcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = welcomeViewController.swift; sourceTree = "<group>"; };
 		E8DB5F1F1FFAFBAE00532316 /* scanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scanViewController.swift; sourceTree = "<group>"; };
 		E8DB5F211FFB3FF000532316 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				E8095CAE1FFA9C0800BF1681 /* Assets.xcassets */,
 				E8095CB01FFA9C0800BF1681 /* LaunchScreen.storyboard */,
 				E8095CB31FFA9C0800BF1681 /* Info.plist */,
+				E891BE30202D3EC300F053DA /* loginVC.swift */,
 			);
 			path = UPass_QR_demo;
 			sourceTree = "<group>";
@@ -151,6 +154,7 @@
 				E8095CAA1FFA9C0800BF1681 /* ViewController.swift in Sources */,
 				E8095CA81FFA9C0800BF1681 /* AppDelegate.swift in Sources */,
 				E8DB5F221FFB3FF000532316 /* DetailViewController.swift in Sources */,
+				E891BE31202D3EC300F053DA /* loginVC.swift in Sources */,
 				E89EAC9E1FFC77C1005BAAAF /* welcomeViewController.swift in Sources */,
 				E8095CBA1FFADB6400BF1681 /* QRViewController.swift in Sources */,
 				E8DB5F201FFAFBAE00532316 /* scanViewController.swift in Sources */,
