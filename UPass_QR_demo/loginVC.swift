@@ -8,7 +8,7 @@
 import WebKit
 import UIKit
 
-class loginVC: UIViewController,UITextFieldDelegate{
+class loginVC: UIViewController,UITextFieldDelegate,UIWebViewDelegate{
     @IBOutlet weak var utorid: UITextField!
     
     @IBOutlet weak var password: UITextField!
@@ -33,6 +33,7 @@ class loginVC: UIViewController,UITextFieldDelegate{
 //            }
 //        }
         // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,41 +45,64 @@ class loginVC: UIViewController,UITextFieldDelegate{
         view.endEditing(true)
     }
     func setUpWK(){
-        let webkit = WKWebView()
-        webkit.frame = view.frame
+        let webkit = UIWebView(frame: view.frame)
+        webkit.backgroundColor = UIColor.blue
+        webkit.delegate = self
+        view.addSubview(webkit)
+        
         let url = URL(string:"https://weblogin.utoronto.ca/")!
         let request = URLRequest(url: url)
-        webkit.load(request)
-        javascriptFunc(web: webkit)
-        view.addSubview(webkit)
+        webkit.loadRequest(URLRequest(url: URL(string: "https://weblogin.utoronto.ca/")!))
+        
+        //webkit.load(request)
+//        javascriptFunc(web: webkit)
+        
+        view.bringSubview(toFront: webkit)
     }
     
-    func javascriptFunc(web:WKWebView){
+   
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        javascriptFunc(web: webView)
+    }
+    
+    func javascriptFunc(web:UIWebView){
 //        var scriptString = "<script language=\"javascript\">"
-        let scriptString =  "document.getElementById('query').submit()"
-        let filluserid = "document.getElementById('inputID').value=\(utorid.text!)"
-        let fillpassword = "document.getElementById('inputPassword').value=\(password.text!)"
-        web.evaluateJavaScript(filluserid, completionHandler: {(any,error) in
-            if let error = error{
-                print(error)
-            }
-        })
-        web.evaluateJavaScript(fillpassword, completionHandler: {(any,error) in
-            if let error = error{
-                print(error)
-            }
-        })
-        web.evaluateJavaScript(scriptString, completionHandler: {(any,error) in
-            if let error = error{
-                print(error)
-            }
-        })
+        let scriptString =  "document.getElementById('query').submit();"
+        let filluserid = "document.getElementById('inputID').value='\(utorid.text!)';"
+        let fillpassword = "document.getElementById('inputPassword').value='\(password.text!)';"
+        
+        DispatchQueue.main.async {
+            web.stringByEvaluatingJavaScript(from: filluserid)
+            web.stringByEvaluatingJavaScript(from: fillpassword)
+            web.stringByEvaluatingJavaScript(from: scriptString)
+        }
+        
+        
+//        web.evaluateJavaScript(filluserid, completionHandler: {(any,error) in
+//            if let error = error{
+//                print(error)
+//            }
+//        })
+//        web.evaluateJavaScript(fillpassword, completionHandler: {(any,error) in
+//            if let error = error{
+//                print(error)
+//            }
+//        })
+//        web.evaluateJavaScript(scriptString, completionHandler: {(any,error) in
+//            if let error = error{
+//                print(error)
+//            }
+//        })
     }
     @IBAction func login(_ sender: UIButton) {
         if (utorid.text != "" && utorid.text != nil){
             if (password.text != "" && password.text != nil){
                 setUpWK()
+                view.endEditing(true)
             }
+        }
+        else{
+            print("something wrong")
         }
 //        let parameters = ["inputID":"chenyo21","inputPassword":"Qq800023"]
 //
