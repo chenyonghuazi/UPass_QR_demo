@@ -16,6 +16,7 @@ class welcomeViewController: UIViewController {
     override func viewDidLoad() {
         count = 3
         super.viewDidLoad()
+        
         let image = #imageLiteral(resourceName: "welcomeScreen")
         let backgroundImage = UIImageView(image: image)
         backgroundImage.frame = self.view.layer.bounds
@@ -65,4 +66,11 @@ class welcomeViewController: UIViewController {
     }
     */
 
+}
+
+extension ViewController{
+    func setNav(){
+        let nav = UINavigationController()
+        self.view.window?.rootViewController = nav
+    }
 }

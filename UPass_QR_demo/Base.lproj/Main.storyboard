@@ -53,6 +53,66 @@
             </objects>
             <point key="canvasLocation" x="-943.20000000000005" y="400.74962518740631"/>
         </scene>
+        <!--WebV-->
+        <scene sceneID="Hhu-NC-Nxf">
+            <objects>
+                <viewController storyboardIdentifier="webV" id="qu3-tp-Sdf" customClass="webV" customModule="UPass_QR_demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hrI-Ua-1TL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="40q-uF-ovP">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="qu3-tp-Sdf" id="rBb-qd-kEt"/>
+                                </connections>
+                            </webView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OEu-Oa-cP8">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="JCa-K4-Itk"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Title" id="EN9-U5-HTe">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="hF9-HV-OKL">
+                                            <connections>
+                                                <action selector="dismiss:" destination="qu3-tp-Sdf" id="KeM-4T-0vC"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="load" id="tou-jJ-Ffh">
+                                            <connections>
+                                                <action selector="load:" destination="qu3-tp-Sdf" id="A14-R4-8PX"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                                <connections>
+                                    <outlet property="delegate" destination="qu3-tp-Sdf" id="EMr-NF-tXZ"/>
+                                </connections>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="40q-uF-ovP" firstAttribute="top" secondItem="OEu-Oa-cP8" secondAttribute="bottom" id="0j8-WM-5DP"/>
+                            <constraint firstItem="OEu-Oa-cP8" firstAttribute="leading" secondItem="PF2-CQ-fl0" secondAttribute="leading" id="1tk-TC-Qtu"/>
+                            <constraint firstItem="OEu-Oa-cP8" firstAttribute="trailing" secondItem="PF2-CQ-fl0" secondAttribute="trailing" id="C9a-yh-dfO"/>
+                            <constraint firstItem="OEu-Oa-cP8" firstAttribute="top" secondItem="PF2-CQ-fl0" secondAttribute="top" id="FFm-gY-6Ok"/>
+                            <constraint firstItem="PF2-CQ-fl0" firstAttribute="trailing" secondItem="40q-uF-ovP" secondAttribute="trailing" id="LLD-t9-1UH"/>
+                            <constraint firstItem="PF2-CQ-fl0" firstAttribute="bottom" secondItem="40q-uF-ovP" secondAttribute="bottom" id="beV-8Z-L9I"/>
+                            <constraint firstItem="40q-uF-ovP" firstAttribute="leading" secondItem="PF2-CQ-fl0" secondAttribute="leading" id="oQp-KK-nhP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="PF2-CQ-fl0"/>
+                    </view>
+                    <connections>
+                        <outlet property="myNavigationBar" destination="OEu-Oa-cP8" id="hcS-61-hgY"/>
+                        <outlet property="myWebView" destination="40q-uF-ovP" id="awY-B5-rfW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vY4-tT-DE0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1543" y="-372"/>
+        </scene>
         <!--LoginVC-->
         <scene sceneID="6RY-yI-hUq">
             <objects>

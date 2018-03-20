@@ -19,13 +19,13 @@ class scanViewController: UIViewController,AVCaptureMetadataOutputObjectsDelegat
     
     var startingTime:Date?
     var video = AVCaptureVideoPreviewLayer()
-    
+    let session = AVCaptureSession()
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         print("error1")
-        let session = AVCaptureSession()
+        
         
         let captureDevice = AVCaptureDevice.default(for: .video)
 //            - input initialization to
@@ -40,11 +40,12 @@ class scanViewController: UIViewController,AVCaptureMetadataOutputObjectsDelegat
         let output = AVCaptureMetadataOutput()
         output.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
         session.addOutput(output)
-        output.metadataObjectTypes = [AVMetadataObject.ObjectType.qr]
+        output.metadataObjectTypes = [AVMetadataObject.ObjectType.qr,AVMetadataObject.ObjectType.pdf417,.ean13,.ean8,.pdf417]
         
         video = AVCaptureVideoPreviewLayer(session: session)
         video.frame = CGRect(x: view.frame.origin.x, y: view.frame.origin.y + navigationBar.frame.origin.y + navigationBar.frame.height, width: view.frame.width, height: view.frame.height - (navigationBar.frame.origin.y + navigationBar.frame.height))
         video.videoGravity = .resizeAspectFill
+        
         view.layer.addSublayer(video)
         
         
@@ -66,63 +67,43 @@ class scanViewController: UIViewController,AVCaptureMetadataOutputObjectsDelegat
     
     
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
+        session.stopRunning()
         if metadataObjects != [] && metadataObjects.count != 0 {
             if let object = metadataObjects[0] as? AVMetadataMachineReadableCodeObject {
-                if object.type == AVMetadataObject.ObjectType.qr {
+                if object.type == AVMetadataObject.ObjectType.qr{
+                    print("Here!!!")
                     jumpBackAndFront(object: object)
-//                    if !(object.stringValue?.contains(","))!{
-//                        let alert = UIAlertController(title: "Your code is:", message: object.stringValue, preferredStyle: .alert)
-//                        alert.addAction(UIAlertAction(title: "Retake", style: .default, handler: nil))
-//                        alert.addAction(UIAlertAction(title: "copy", style: .default, handler: { (nil) in
-//                            UIPasteboard.general.string = object.stringValue}))
-//                        present(alert, animated: true, completion: nil)
-//                    }
-//                    else{
-//                        dismiss(animated: true, completion: {
-//                            let lists = object.stringValue!.components(separatedBy: ",")
-//                            let story = UIStoryboard(name: "Main", bundle: nil)
-//                            let destVC = story.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
-//                            destVC.firstNameString = lists[0]
-//                            print("firstName:\(lists[0])")
-//                            destVC.lastNameString = lists[1]
-//                            destVC.emailString =  lists[2]
-//                            destVC.phoneString =  lists[3]
-//
-//                            self.present(destVC, animated: true, completion: {
-//                                destVC.setInfo()
-//                            })
-//                        })
-//                    }
                     
-                    //------
-                    
-                    
-//                    else
-//                     {
-//                     let story = UIStoryboard(name: "Main", bundle: nil)
-//                     let destVC = story.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
-//                        destVC.textBundle = object.stringValue
-//                        let lists = object.stringValue!.components(separatedBy: ",")
-////                     print("lists exist")
-//                        destVC.firstNameString = lists[0]
-//                        print("firstName:\(lists[0])")
-//                        destVC.lastNameString = lists[1]
-//                        destVC.emailString =  lists[2]
-//                        destVC.phoneString =  lists[3]
-//                        print("present error: threand?")
-//                        present(destVC, animated: true, completion: {
-//                            destVC.setInfo()
-//                        })
-//                     }
+                }else if let stringValue = object.stringValue{
+                    AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+                    handleBarCode(code: stringValue)
                 }
+
+            }else{
+                print("err")
             }
         }
     }
     
+    func handleBarCode(code:String){
+        let alertISBN = UIAlertController(title: "Succeed scanned", message: "ISBN: " + code, preferredStyle: .alert)
+        alertISBN.addAction(UIAlertAction(title: "OK", style: .cancel, handler: {action in
+            self.session.startRunning()
+        }))
+        alertISBN.addAction(UIAlertAction(title: "Search", style: .default, handler: { (action) in
+            print("hi")
+        }))
+        present(alertISBN, animated: true, completion: nil)
+    }
+    
+    
+    
     func jumpBackAndFront(object:AVMetadataMachineReadableCodeObject){
         if !(object.stringValue?.contains(","))!{
             let alert = UIAlertController(title: "Your code is:", message: object.stringValue, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Retake", style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Retake", style: .default, handler: {action in
+                self.session.startRunning()
+            }))
             alert.addAction(UIAlertAction(title: "copy", style: .default, handler: { (nil) in
                 UIPasteboard.general.string = object.stringValue}))
             present(alert, animated: true, completion: nil)
