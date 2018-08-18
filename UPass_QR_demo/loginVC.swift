@@ -128,34 +128,8 @@ class loginVC: UIViewController,UITextFieldDelegate,UIWebViewDelegate,WKNavigati
             web.stringByEvaluatingJavaScript(from: fillpassword)
             
             }
-        if let result = web.stringByEvaluatingJavaScript(from: scriptString){
-            print(result)
-            Completion()
-            
-        }
-    
-//        web.stringByEvaluatingJavaScript(from: filluserid)
-//        web.stringByEvaluatingJavaScript(from: fillpassword)
-//        if let result = web.stringByEvaluatingJavaScript(from: scriptString){
-//            print(result)
-//        }
-//        web.stringByEvaluatingJavaScript(from: scriptString)
-        
-//        web.evaluateJavaScript(filluserid, completionHandler: {(any,error) in
-//            if let error = error{
-//                print(error)
-//            }
-//        })
-//        web.evaluateJavaScript(fillpassword, completionHandler: {(any,error) in
-//            if let error = error{
-//                print(error)
-//            }
-//        })
-//        web.evaluateJavaScript(scriptString, completionHandler: {(any,error) in
-//            if let error = error{
-//                print(error)
-//            }
-//        })
+        web.stringByEvaluatingJavaScript(from: scriptString)
+
     }
     @IBAction func login(_ sender: UIButton) {
         if (utorid.text != "" && utorid.text != nil){

@@ -10,7 +10,7 @@ import UIKit
 
 class webV: UIViewController,UIWebViewDelegate {
     @IBAction func load(_ sender: UIBarButtonItem) {
-        myWebView!.loadRequest(URLRequest(url: URL(string: "https://portal.utoronto.ca/webapps/portal/execute/tabs/tabAction?tab_tab_group_id=_1_1")!))
+        myWebView.loadRequest(URLRequest(url: URL(string: "https://portal.utoronto.ca/webapps/portal/execute/tabs/tabAction?tab_tab_group_id=_1_1")!))
     }
     
     @IBOutlet weak var myNavigationBar: UINavigationBar!
@@ -23,9 +23,10 @@ class webV: UIViewController,UIWebViewDelegate {
 //        myWebView.translatesAutoresizingMaskIntoConstraints = false
 //        myWebView.topAnchor.constraint(equalTo: view.topAnchor)
         // Do any additional setup after loading the view.
-        guard let url = url else{ return }
-        myWebView.loadRequest(URLRequest(url: url))
-        myWebView.delegate = self
+//        guard let url = url else{ return }
+//        myWebView.loadRequest(URLRequest(url: url))
+//        myWebView.delegate = self
+         myWebView.loadRequest(URLRequest(url: URL(string: "https://idpz.utorauth.utoronto.ca/idp/profile/SAML2/Redirect/SSO?execution=e1s1")!))
     }
 
     @IBAction func dismiss(_ sender: UIBarButtonItem) {
@@ -37,19 +38,21 @@ class webV: UIViewController,UIWebViewDelegate {
     }
     func webViewDidFinishLoad(_ webView: UIWebView) {
         let scriptString =  "document.getElementById('query').submit();"
-        let filluserid = "document.getElementById('inputID').value='\(utorid!)';"
-        let fillpassword = "document.getElementById('inputPassword').value='\(password!)';"
+        let filluserid = "document.getElementById('username').value='chenyo21';"
+        let fillpassword = "document.getElementById('password').value='Qq800023';"
         //        let scriptString =  String(format:"document.forms[0].submit();")
         //        let filluserid = "document.getElementById('username').value='\(utorid.text!)';"
         //        let fillpassword = "document.getElementById('password').value='\(password.text!)';"
-//        DispatchQueue.main.async {
+        DispatchQueue.main.async {
             webView.stringByEvaluatingJavaScript(from: filluserid)
             webView.stringByEvaluatingJavaScript(from: fillpassword)
-            webView.stringByEvaluatingJavaScript(from: scriptString)
+            
+        
 //                let myTimer : Timer = Timer.scheduledTimer(timeInterval: 4, target: self, selector: #selector(self.handleReload), userInfo: nil, repeats: false)
             
             
-//        }
+        }
+//        webView.stringByEvaluatingJavaScript(from: scriptString)
 //        webView.stringByEvaluatingJavaScript(from: scriptString)
 //        let myTimer : Timer = Timer.scheduledTimer(timeInterval: 6, target: self, selector: #selector(self.handleReload), userInfo: nil, repeats: false)
     }

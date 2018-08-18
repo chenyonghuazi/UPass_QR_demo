@@ -52,7 +52,7 @@ class scanViewController: UIViewController,AVCaptureMetadataOutputObjectsDelegat
         self.scanImageView.layer.borderWidth = 3
         self.scanImageView.layer.borderColor = UIColor.green.cgColor
         self.view.bringSubview(toFront: scanImageView)
-        
+        self.view.alpha = 0.5
         self.scanImageView.alpha = 1.0
         session.startRunning()
 //        and capture func  to
